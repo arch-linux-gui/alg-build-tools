@@ -40,6 +40,12 @@ trap perform_cleanup SIGINT
 print_message1 "Updated all/few/one packages? "
 read -p "Enter choice (all/few/one): " ans
 
+# Check if input is not "all", "few", or "one"
+if [[ "$ans" != "all" && "$ans" != "few" && "$ans" != "one" ]]; then
+    print_message4  "Invalid input. Exiting..."
+    exit 0
+fi
+
 # Choose server repo
 print_message1 "Choose which repo you want to clone and push"
 print_message2 "1) alg_repo"
@@ -64,7 +70,7 @@ read -p "Enter the number of your choice: " server_choice
 
 
 if [ "$ans" == "all" ]; then
-    for ((i=1; i<=15; i++)); do
+    for ((i=1; i<=16; i++)); do
         print_message1 "Updating package $i"
         # package_build $i
 
@@ -126,9 +132,27 @@ if [ "$ans" == "all" ]; then
 
 elif [ "$ans" == "few" ]; then
 
-    # Prompt the user to enter comma-separated values
-    echo "Enter comma-separated values:"
-    read -r input
+   # Prompt the user for a package name
+   print_message1 "Enter a directory name to search for: "
+   print_message2 "1) alg-cinnamon-settings"
+   print_message2 "2) alg-firefox-settings"
+   print_message2 "3) alg-gnome-settings"
+   print_message2 "4) alg-i3-settings"
+   print_message2 "5) alg-livecd-desktop"
+   print_message2 "6) alg-mate-settings"
+   print_message2 "7) alg-office-settings"
+   print_message2 "8) alg-plasma-settings"
+   print_message2 "9) alg-xfce-settings"
+   print_message2 "10) alg-net-cala-config"
+   print_message2 "11) alg-pure-cala-config"
+   print_message2 "12) alg-theme-cala-config"
+   print_message2 "13) alg-wm-cala-config"
+   print_message2 "14) alg-zen-cala-config"
+   print_message2 "15) studio-cala-config"
+   print_message2 "16) calamares-3.2.62"
+
+    # Prompt the user to enter comma-separated values and read input
+    read -rp "Enter comma-separated values: " input
 
     # Split the input into an array
     IFS=',' read -r -a values <<< "$input"
@@ -197,7 +221,8 @@ elif [ "$ans" == "few" ]; then
 
     perform_cleanup 
 
-else
+elif [ "$ans" == "one" ]; then
+
         # Call the get_pkgbuild function
         get_pkgbuild $package_name
 
@@ -252,4 +277,8 @@ else
     perform_cleanup
 
     #print_message1 "$package_name has been updated successfully."
+
+else
+    print_message4 "Invalid choice"
+    perform_cleanup
 fi

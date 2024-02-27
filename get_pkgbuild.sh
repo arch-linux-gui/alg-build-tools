@@ -31,8 +31,7 @@ get_pkgbuild() {
    print_message2 "14) alg-zen-cala-config"
    print_message2 "15) studio-cala-config"
    print_message2 "16) calamares-3.2.62"
-   print_message3 "Invalid choice"
-
+   
    if [ "$ans" == "all" ]; then
       package_number=$i
 

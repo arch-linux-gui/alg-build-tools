@@ -16,30 +16,37 @@ package_build(){
     fi
     
 
+
     # Set the file names and directory paths
     zst_file=""
-    
+
     # Check if the zst file exists with the first naming convention
-    if ls $package_name-*-$current_year.$current_month-$updatedRel-any.pkg.tar.zst 1> /dev/null 2>&1; then
-        zst_file=$(ls $package_name-*-$current_year.$current_month-$updatedRel-any.pkg.tar.zst)
+    if ls "$package_name"-"$current_year.$current_month"-"$updatedRel"-any.pkg.tar.zst 1> /dev/null 2>&1; then
+        zst_file=$(ls "$package_name"-"$current_year.$current_month"-"$updatedRel"-any.pkg.tar.zst)
     fi
-    
-    # If the first pattern not found, check the second naming convention
-    if [ -z "$zst_file" ] && ls $package_name-*-$updatedRel-any.pkg.tar.zst 1> /dev/null 2>&1; then
-        zst_file=$(ls $package_name-*-$updatedRel-any.pkg.tar.zst)
+
+    # If the first pattern is not found, check the second naming convention
+    if [ -z "$zst_file" ] && ls "$package_name"-"$updatedRel"-any.pkg.tar.zst 1> /dev/null 2>&1; then
+        zst_file=$(ls "$package_name"-"$updatedRel"-any.pkg.tar.zst)
     fi
-    
+
     # If both patterns are not found, fallback to the third naming convention
-    if [ -z "$zst_file" ] && ls $package_name-*-$updatedRel-x86_64.pkg.tar.zst 1> /dev/null 2>&1; then
-        zst_file=$(ls $package_name-*-$updatedRel-x86_64.pkg.tar.zst)
+    if [ -z "$zst_file" ] && ls "$package_name"-"$current_year.$current_month"-"$updatedRel"-x86_64.pkg.tar.zst 1> /dev/null 2>&1; then
+        zst_file=$(ls "$package_name"-"$current_year.$current_month"-"$updatedRel"-x86_64.pkg.tar.zst)
     fi
-    
+
+    # If still not found, try the fourth naming convention
+    if [ -z "$zst_file" ] && ls "$package_name"-"$updatedRel"-x86_64.pkg.tar.zst 1> /dev/null 2>&1; then
+        zst_file=$(ls "$package_name"-"$updatedRel"-x86_64.pkg.tar.zst)
+    fi
+
     # If zst_file is still empty, no matching zst file found
     if [ -z "$zst_file" ]; then
         echo "No matching zst file found."
     else
         echo "Found zst file: $zst_file"
     fi
+
 
     #if [[ ! "$gpg_key_choice" =~ ^[1-${#gpg_keys[@]}]$ ]]; then
     # print_message3 "Invalid choice. Aborting."
