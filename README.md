@@ -1,10 +1,10 @@
 # ALG Tools
 
-Welcome to the ALG Tools repository! Here, you'll find a comprehensive set of Bash scripts designed to automate various tasks for managing Arka Linux GUI (ALG) packages and repositories.
+Welcome to the ALG Build Tools repository! Here, you'll find a comprehensive set of Bash scripts designed to automate various tasks for managing Arka Linux GUI (ALG) packages and repositories.
 
 ## Overview
 
-The ALG Tools are a toolkit for streamlining the process of updating, managing, and maintaining ALG packages and repositories. From updating PKGBUILD files to managing repository servers, these scripts handle it all efficiently.
+The ALG Build Tools are a toolkit for streamlining the process of updating, managing, and maintaining ALG packages and repositories. From updating PKGBUILD files to managing repository servers, these scripts handle it all efficiently.
 
 ## For Whom
 
@@ -27,8 +27,8 @@ These scripts are for maintainers, contributors, and developers involved in ALG 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/arch-linux-gui/alg-tools.git
-   cd alg-tools
+   git clone https://github.com/arch-linux-gui/alg-build-tools.git
+   cd alg-build-tools
 
 Make sure your function scripts (update_pkgbuild.sh, get_pkgbuild.sh, update_server.sh, etc) are located in the same directory as the start.sh.
 
