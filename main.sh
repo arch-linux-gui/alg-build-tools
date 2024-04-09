@@ -149,7 +149,7 @@ elif [ "$ans" == "few" ]; then
    print_message2 "13) alg-wm-cala-config"
    print_message2 "14) alg-zen-cala-config"
    print_message2 "15) studio-cala-config"
-   print_message2 "16) calamares-3.2.62"
+   print_message2 "16) calamares-3.3.5"
 
     # Prompt the user to enter comma-separated values and read input
     read -rp "Enter comma-separated values: " input
