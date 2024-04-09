@@ -30,7 +30,7 @@ get_pkgbuild() {
    print_message2 "13) alg-wm-cala-config"
    print_message2 "14) alg-zen-cala-config"
    print_message2 "15) studio-cala-config"
-   print_message2 "16) calamares-3.2.62"
+   print_message2 "16) calamares-3.3.5"
    
    if [ "$ans" == "all" ]; then
       package_number=$i
@@ -75,7 +75,7 @@ get_pkgbuild() {
           ;;
       15) package_name="studio-cala-config"
           ;;
-      16) package_name="calamares-3.2.62"
+      16) package_name="calamares-3.3.5"
           ;;
       *) print_message3 "Invalid choice"
          perform_cleanup ;;
@@ -106,7 +106,7 @@ get_pkgbuild() {
         perform_cleanup  # Exit successfully
     fi
 
-    if [ "$package_name" = "calamares-3.2.62" ]; then
+    if [ "$package_name" = "calamares-3.3.5" ]; then
         pkgrel=$(grep -oP '^pkgrel=\K\d+' PKGBUILD)
         updatedRel=$((pkgrel + 1))
     
