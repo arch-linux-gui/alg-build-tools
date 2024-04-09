@@ -1,4 +1,4 @@
-# ALG Tools
+# ALG Build Tools
 
 Welcome to the ALG Build Tools repository! Here, you'll find a comprehensive set of Bash scripts designed to automate various tasks for managing Arka Linux GUI (ALG) packages and repositories.
 
